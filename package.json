@@ -12,5 +12,51 @@
   "scripts": {
     "build": "tsup --format esm --dts",
     "dev": "tsup --format esm --dts --watch"
+  },
+  "pluginType": "elizaos:plugin:1.0.0",
+  "pluginParameters": {
+    "type": "object",
+    "required": [
+      "farcasterNeynarSignerUuid",
+      "farcasterNeynarApiKey",
+      "farcasterFid"
+    ],
+    "properties": {
+      "farcasterNeynarSignerUuid": {
+        "type": "string",
+        "description": "Farcaster Neynar Signer UUID"
+      },
+      "farcasterNeynarApiKey": {
+        "type": "string",
+        "description": "Farcaster Neynar API Key"
+      },
+      "farcasterFid": {
+        "type": "string",
+        "description": "Farcaster FID (Farcaster ID)"
+      },
+      "farcasterHubUrl": {
+        "type": "string",
+        "description": "Farcaster Hub URL",
+        "default": "hub.pinata.cloud"
+      },
+      "farcasterDryRun": {
+        "type": "boolean",
+        "description": "Enable dry run mode (no actual posts)",
+        "default": false
+      },
+      "farcasterPollInterval": {
+        "type": "number",
+        "description": "Polling interval in seconds",
+        "default": 120
+      }
+    }
+  },
+  "pluginEnv": {
+    "FARCASTER_NEYNAR_SIGNER_UUID": "farcasterNeynarSignerUuid",
+    "FARCASTER_NEYNAR_API_KEY": "farcasterNeynarApiKey",
+    "FARCASTER_FID": "farcasterFid",
+    "FARCASTER_HUB_URL": "farcasterHubUrl",
+    "FARCASTER_DRY_RUN": "farcasterDryRun",
+    "FARCASTER_POLL_INTERVAL": "farcasterPollInterval"
   }
 }
