@@ -4,6 +4,7 @@
         "jsx": "react",
         "outDir": "dist",
         "rootDir": "./src",
+        "types": ["lodash"],
         "strict": true
     },
     "include": ["src"]
