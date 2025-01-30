@@ -1,9 +1,4 @@
-import {
-  toHex
-} from "./chunk-7HJADXH2.js";
-import "./chunk-PR4QN5HX.js";
-
-// src/index.ts
+// src/farcaster-agent-client.ts
 import { elizaLogger as elizaLogger5 } from "@elizaos/core";
 
 // src/client.ts
@@ -43,7 +38,7 @@ var FarcasterClient = class {
       const result = await this.neynar.publishCast({
         signerUuid: this.signerUuid,
         text: cast,
-        parent: parentCastId?.hash
+        parent: parentCastId == null ? void 0 : parentCastId.hash
       });
       if (result.success) {
         return {
@@ -363,6 +358,7 @@ import {
   getEmbeddingZeroVector,
   stringToUuid as stringToUuid2
 } from "@elizaos/core";
+import { toHex } from "viem";
 function createCastMemory({
   roomId,
   runtime,
@@ -460,8 +456,8 @@ async function sendCast({
       };
       sent.push(cast);
       parentCastId = {
-        fid: neynarCast?.authorFid,
-        hash: neynarCast?.hash
+        fid: neynarCast == null ? void 0 : neynarCast.authorFid,
+        hash: neynarCast == null ? void 0 : neynarCast.hash
       };
     }
   }
@@ -503,6 +499,7 @@ var FarcasterPostManager = class {
     if (this.timeout) clearTimeout(this.timeout);
   }
   async generateNewCast() {
+    var _a;
     elizaLogger3.info("Generating new cast");
     try {
       const fid = Number(this.runtime.getSetting("FARCASTER_FID"));
@@ -537,7 +534,7 @@ var FarcasterPostManager = class {
       );
       const context = composeContext({
         state,
-        template: this.runtime.character.templates?.farcasterPostTemplate || postTemplate
+        template: ((_a = this.runtime.character.templates) == null ? void 0 : _a.farcasterPostTemplate) || postTemplate
       });
       const newContent = await generateText({
         runtime: this.runtime,
@@ -605,6 +602,7 @@ import {
   stringToUuid as stringToUuid4,
   elizaLogger as elizaLogger4
 } from "@elizaos/core";
+import { toHex as toHex2 } from "viem";
 var FarcasterInteractionManager = class {
   constructor(client, runtime, signerUuid, cache) {
     this.client = client;
@@ -642,7 +640,7 @@ var FarcasterInteractionManager = class {
     });
     const agent = await this.client.getProfile(agentFid);
     for (const mention of mentions) {
-      const messageHash = toHex(mention.hash);
+      const messageHash = toHex2(mention.hash);
       const conversationId = `${messageHash}-${this.runtime.agentId}`;
       const roomId = stringToUuid4(conversationId);
       const userId = stringToUuid4(mention.authorFid.toString());
@@ -687,6 +685,7 @@ var FarcasterInteractionManager = class {
     memory,
     thread
   }) {
+    var _a, _b, _c, _d, _e, _f;
     if (cast.profile.fid === agent.fid) {
       elizaLogger4.info("skipping cast from bot itself", cast.hash);
       return;
@@ -723,7 +722,7 @@ var FarcasterInteractionManager = class {
     });
     const shouldRespondContext = composeContext2({
       state,
-      template: this.runtime.character.templates?.farcasterShouldRespondTemplate || this.runtime.character?.templates?.shouldRespondTemplate || shouldRespondTemplate
+      template: ((_a = this.runtime.character.templates) == null ? void 0 : _a.farcasterShouldRespondTemplate) || ((_c = (_b = this.runtime.character) == null ? void 0 : _b.templates) == null ? void 0 : _c.shouldRespondTemplate) || shouldRespondTemplate
     });
     const memoryId = castUuid({
       agentId: this.runtime.agentId,
@@ -752,7 +751,7 @@ var FarcasterInteractionManager = class {
     }
     const context = composeContext2({
       state,
-      template: this.runtime.character.templates?.farcasterMessageHandlerTemplate ?? this.runtime.character?.templates?.messageHandlerTemplate ?? messageHandlerTemplate
+      template: ((_d = this.runtime.character.templates) == null ? void 0 : _d.farcasterMessageHandlerTemplate) ?? ((_f = (_e = this.runtime.character) == null ? void 0 : _e.templates) == null ? void 0 : _f.messageHandlerTemplate) ?? messageHandlerTemplate
     });
     const responseContent = await generateMessageResponse({
       runtime: this.runtime,
@@ -805,7 +804,7 @@ var FarcasterInteractionManager = class {
   }
 };
 
-// src/index.ts
+// src/farcaster-agent-client.ts
 import { Configuration, NeynarAPIClient as NeynarAPIClient2 } from "@neynar/nodejs-sdk";
 var FarcasterAgentClient = class {
   constructor(runtime, client) {
@@ -849,7 +848,27 @@ var FarcasterAgentClient = class {
     await Promise.all([this.posts.stop(), this.interactions.stop()]);
   }
 };
+
+// src/index.ts
+var FarcasterClientInterface = {
+  name: "farcaster",
+  config: {},
+  start: async (runtime) => {
+    const farcasterAgentClient = new FarcasterAgentClient(runtime);
+    await farcasterAgentClient.start();
+    return farcasterAgentClient;
+  },
+  stop: async (runtime) => {
+    try {
+      console.log("Stopping farcaster client", runtime.agentId);
+      await runtime.clients.farcaster.stop();
+    } catch (e) {
+      console.error("client-farcaster interface stop error", e);
+    }
+  }
+};
+var index_default = FarcasterClientInterface;
 export {
-  FarcasterAgentClient
+  index_default as default
 };
 //# sourceMappingURL=index.js.map
