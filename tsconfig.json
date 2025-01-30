@@ -1,5 +1,4 @@
 {
-    "extends": "../core/tsconfig.json",
     "compilerOptions": {
         "jsx": "react",
         "outDir": "dist",
