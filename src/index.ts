@@ -5,6 +5,9 @@ import { FarcasterInteractionManager } from "./interactions";
 import { Configuration, NeynarAPIClient } from "@neynar/nodejs-sdk";
 
 export class FarcasterAgentClient implements Client {
+    name = 'farcaster';
+    config = {};
+
     client: FarcasterClient;
     posts: FarcasterPostManager;
     interactions: FarcasterInteractionManager;
