@@ -1,8 +1,6 @@
-declare const FarcasterClientInterface: {
-    name: string;
-    config: {};
-    start: (runtime: any) => Promise<any>;
-    stop: (runtime: any) => Promise<void>;
-};
+import { Client, Plugin } from '@elizaos/core';
 
-export { FarcasterClientInterface as default };
+declare const FarcasterClientInterface: Client;
+declare const farcasterPlugin: Plugin;
+
+export { FarcasterClientInterface, farcasterPlugin as default };
