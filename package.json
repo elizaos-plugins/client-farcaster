@@ -19,7 +19,6 @@
         "dist"
     ],
     "dependencies": {
-        "@elizaos/core": "workspace:*",
         "@neynar/nodejs-sdk": "^2.0.3"
     },
     "devDependencies": {
