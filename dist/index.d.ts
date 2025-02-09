@@ -1,6 +1,7 @@
-import { Client, Plugin } from '@elizaos/core';
+declare const farcasterPlugin: {
+    name: string;
+    description: string;
+    clients: Client[];
+};
 
-declare const FarcasterClientInterface: Client;
-declare const farcasterPlugin: Plugin;
-
-export { FarcasterClientInterface, farcasterPlugin as default };
+export { farcasterPlugin as default };

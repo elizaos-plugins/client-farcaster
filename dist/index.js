@@ -1,9 +1,9 @@
 import {
   toHex
-} from "./chunk-ALRYFIGT.js";
+} from "./chunk-7MC3GARH.js";
 import "./chunk-PR4QN5HX.js";
 
-// src/index.ts
+// src/farcaster-client.ts
 import { elizaLogger as elizaLogger5 } from "@elizaos/core";
 
 // src/client.ts
@@ -861,7 +861,7 @@ var FarcasterInteractionManager = class {
   }
 };
 
-// src/index.ts
+// src/farcaster-client.ts
 import { Configuration, NeynarAPIClient } from "@neynar/nodejs-sdk";
 
 // src/environment.ts
@@ -4997,7 +4997,7 @@ ${errorMessages}`
   }
 }
 
-// src/index.ts
+// src/farcaster-client.ts
 var FarcasterManager = class {
   client;
   posts;
@@ -5050,6 +5050,8 @@ var FarcasterClientInterface = {
     return manager;
   }
 };
+
+// src/index.ts
 var farcasterPlugin = {
   name: "farcaster",
   description: "Farcaster client",
@@ -5057,7 +5059,6 @@ var farcasterPlugin = {
 };
 var index_default = farcasterPlugin;
 export {
-  FarcasterClientInterface,
   index_default as default
 };
 //# sourceMappingURL=index.js.map

@@ -842,9 +842,9 @@ var require_permessage_deflate = __commonJS({
   }
 });
 
-// ../../node_modules/utf-8-validate/fallback.js
+// ../../node_modules/ws/node_modules/utf-8-validate/fallback.js
 var require_fallback2 = __commonJS({
-  "../../node_modules/utf-8-validate/fallback.js"(exports, module) {
+  "../../node_modules/ws/node_modules/utf-8-validate/fallback.js"(exports, module) {
     "use strict";
     function isValidUTF8(buf) {
       const len = buf.length;
@@ -879,9 +879,9 @@ var require_fallback2 = __commonJS({
   }
 });
 
-// ../../node_modules/utf-8-validate/index.js
+// ../../node_modules/ws/node_modules/utf-8-validate/index.js
 var require_utf_8_validate = __commonJS({
-  "../../node_modules/utf-8-validate/index.js"(exports, module) {
+  "../../node_modules/ws/node_modules/utf-8-validate/index.js"(exports, module) {
     "use strict";
     try {
       module.exports = require_node_gyp_build2()(__dirname);
@@ -3912,4 +3912,4 @@ var WebSocket3 = (() => {
 export {
   WebSocket3 as WebSocket
 };
-//# sourceMappingURL=_esm-GOPLUTRN.js.map
+//# sourceMappingURL=_esm-M6467HDT.js.map
