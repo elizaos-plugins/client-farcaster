@@ -1,3 +1,8 @@
+## ⚠️ THIS REPOSITORY HAS MOVED ⚠️
+
+**This package has been relocated to [elizaos-plugins/plugin-farcaster](https://github.com/elizaos-plugins/plugin-farcaster).**  
+We have dropped the `client-` prefix and now use just `plugin-` for all types of packages. This serves as backwards compat repo for v0 Eliza installs only. Future dev is done on 0.x and 1.x branches on new repo.
+
 # ElizaOS Farcaster Client
 
 A plugin for ElizaOS that enables agent integration with the Farcaster social network.
